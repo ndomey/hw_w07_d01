@@ -23,7 +23,7 @@ function App() {
     setNewTask(event.target.value)
   }
 
-  const handleNewPriority = () => {
+  const handleNewPriority = (event) => {
     setNewPriority(event.target.value)
   }
 
@@ -33,19 +33,20 @@ function App() {
     copyTasks.push({name: newTask, priority: taskPriority})
     setTasks(copyTasks)
     setNewTask("")
+    setNewPriority()
   }
 
-  const checkButton = () => {    
-    if(document.getElementById('high').checked) {   
-        document.getElementById("disp").innerHTML   
-            = document.getElementById("high").value      
-    }   
-    else if(document.getElementById('low').checked) {   
-        document.getElementById("disp").innerHTML   
-            = document.getElementById("low").value       
-    }   
+  // const checkButton = () => {    
+  //   if(document.getElementById('high').checked) {   
+  //       document.getElementById("disp").innerHTML   
+  //           = document.getElementById("high").value      
+  //   }   
+  //   else if(document.getElementById('low').checked) {   
+  //       document.getElementById("disp").innerHTML   
+  //           = document.getElementById("low").value       
+  //   }   
  
-  }   
+  // }   
 
   
   return (
@@ -56,8 +57,8 @@ function App() {
       </ul>
       <form onSubmit={saveNewTask}>
         <label htmlFor='new-task'>Add a new task:</label>
-        <input id='new-task' type='text' value={newTask} onChange={handleTaskInput}/>
-        <input type="radio" name="priority" id="high" value="high" onChange={handleNewPriority} />High
+        <input id='new-task' type='text' value={newTask} onChange={handleTaskInput} required/>
+        <input type="radio" name="priority" id="high" value="high" onChange={handleNewPriority} required/>High
         <input type="radio" name="priority" id="low" value="low" onChange={handleNewPriority} />Low<br/>
         <input type='submit' value='Save New Task'/>
       </form>
